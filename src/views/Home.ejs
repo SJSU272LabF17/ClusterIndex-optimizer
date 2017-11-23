@@ -1,63 +1,282 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-   	
-  </head>
-  <title>Sign In</title>
-  <style>
-  	body {
-    		background-image: url("NYC.jpg");
-		 }
-  </style>
-  
-  <body>
-  	<div class="jumbotron jumbotron-fluid" style="background: #333 ; height : 120px">
-    	<h1 style="color:white ; text-align: center ; font-weight: normal ; font-family: 'Century Gothic' ">StoreMate</h1>
+<head>
+	<meta charset="utf-8">
+	<title>Clustering Using KMeans</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link href="css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="color/default.css" rel="stylesheet">
+	<link rel="shortcut icon" href="img/favicon.ico">
+</head>
+
+<body>
+	<!-- navbar -->
+	<div class="navbar-wrapper">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<!-- Responsive navbar -->
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+				</a>
+					<h1 class="brand"><a href="/">PROJECT</a></h1>
+					<!-- navigation -->
+					<nav class="pull-right nav-collapse collapse">
+						<ul id="menu-main" class="nav">
+							<li><a title="home" href="#home">HOME</a></li>
+							<li><a title="clustering" href="#clustering">CLUSTERING</a></li>
+							<li><a title="kmeans" href="#kmeans">K-MEANS</a></li>
+							<li><a title="upload" href="/Upload">UPLOAD</a></li>
+							<li><a title="comparision" href="/Comparison">COMPARISION</a></li>
+							<li><a title="team" href="#about">TEAM 13</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
 	</div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-  
-  
-  	<div class="container"> 
-  
-  		<div class="panel-heading">
-                        <div style="margin-bottom: 25px ; font-weight: 500 ; color : green ; font-size: 200% ; " class="panel-title">Sign In</div>
-                        
-        </div>
-        
-         <form id="loginform" class="form-horizontal" role="form" method="post" action="/userCheck">
-         
-         	<div class="form-group row">
-     			 <label for="username" class="col-sm-1 col-form-label">Username</label>
-      			 <div class="col-sm-4">
-        			 <input type="text" class="form-control" name="username" id="username" placeholder="Username">
-       			 </div>
-   			</div>
-   			
-    		<div class="form-group row">
-      			<label for="password" class="col-sm-1 col-form-label">Password</label>
-      			<div class="col-sm-4">
-        			<input type="password" class="form-control" name="password" id="password" placeholder="Password">
-      			</div>
-    		</div>  
-    		
-    		<div class="form-group row">
-      			<div class="offset-sm-2 col-sm-10">
-        		<button type="submit" class="btn btn-success" >Sign In</button>
-        		<a href="/signUp" class="btn btn-primary" role="button">Sign Up</a>
-      		</div>  
- 
-  	</div>
- 
-  
-  </body>
+	<!-- Header area -->
+	<section id="home">
+		<div id="header-wrapper" class="header-slider">
+			<header class="clearfix">
+				<div class="logo">
+					<img src="img/" alt="" />
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="span12">
+							<div id="main-flexslider" class="flexslider">
+								<ul class="slides">
+									<li>
+										<p class="home-slide-content">
+											<strong>clustering</strong> using k-means
+										</p>
+									</li>
+									<li>
+										<p class="home-slide-content">
+											Fast data <strong>retrieval</strong>
+										</p>
+									</li>
+									<li>
+										<p class="home-slide-content">
+											Store relevant data <strong>together</strong>
+										</p>
+									</li>
+								</ul>
+							</div>
+							<!-- end slider -->
+						</div>
+					</div>
+				</div>
+			</header>
+		</div>
+	</section>
+	<!-- spacer section -->
+	<section class="spacer green">
+		<div class="container">
+			<div class="row">
+				<div class="span6 alignright flyLeft">
+					<blockquote class="large">
+						Information is the oil of the 21st century, and analytics is the combustion engine. 
+						<cite>Peter Sondergaard, SVP, Gartner Research</cite>
+					</blockquote>
+				</div>
+				<div class="span6 aligncenter flyRight">
+					<i class="icon-coffee icon-10x"></i>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end spacer section -->
+
+	<!-- section: clustering -->
+	<section id="clustering" class="section">
+		<div class="container">
+			<h4>Clustering</h4>
+			<div class="row">
+				<div class="span5 offset1">
+					<div>
+						<h2><strong>Cluster</strong> analysis</h2>
+						<p>
+							Cluster analysis or clustering is the task of grouping a set of objects in such a way that objects in the same group (called a cluster) are more similar (in some sense or another) to each other than to those in other groups (clusters). It is a main task of exploratory data mining, and a common technique for statistical data analysis, used in many fields, including machine learning, pattern recognition, image analysis, information retrieval, bioinformatics, data compression, and computer graphics.
+						</p>
+					</div>
+				</div>
+				<div class="span6">
+					<div class="aligncenter">
+						<img src="img/icons/data_science.png" alt="" />
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="span6">
+					<div class="aligncenter">
+						<img src="img/icons/clustering_1.png" alt="" />
+					</div>
+				</div>
+				<div class="span5 offset1" style="margin-top: 50px">
+					<div>
+						
+						<p>
+							Cluster analysis itself is not one specific algorithm, but the general task to be solved. It can be achieved by various algorithms that differ significantly in their notion of what constitutes a cluster and how to efficiently find them. Popular notions of clusters include groups with small distances among the cluster members, dense areas of the data space, intervals or particular statistical distributions. Clustering can therefore be formulated as a multi-objective optimization problem. Cluster analysis as such is not an automatic task, but an iterative process of knowledge discovery or interactive multi-objective optimization that involves trial and failure. It is often necessary to modify data preprocessing and model parameters until the result achieves the desired properties.
+						</p>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		<!-- /.container -->
+	</section>
+	<!-- end section: clustering -->
+
+	<!-- section: kmeans -->
+	<section id="kmeans" class="section  section green">
+		<div class="container">
+			<h4>K-Means</h4>
+			<div class="row">
+				<div class="span5 offset1">
+					<div>
+						<h2><strong>K-Means</strong> alogorithm</h2>
+						<p>
+							k-means clustering is a method of vector quantization, originally from signal processing, that is popular for cluster analysis in data mining. k-means clustering aims to partition n observations into k clusters in which each observation belongs to the cluster with the nearest mean, serving as a prototype of the cluster. This results in a partitioning of the data space into Voronoi cells.
+						</p>
+					</div>
+				</div>
+				<div class="span6">
+					<div class="aligncenter">
+						<img src="img/icons/kmeans.png" alt="" />
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="span6">
+					<div class="aligncenter">
+						<img src="img/icons/" alt="" />
+					</div>
+				</div>
+				<div class="span5 offset1" style="margin-top: 50px">
+					<div>
+						
+						<p>
+							The problem is computationally difficult (NP-hard); however, there are efficient heuristic algorithms that are commonly employed and converge quickly to a local optimum. These are usually similar to the expectation-maximization algorithm for mixtures of Gaussian distributions via an iterative refinement approach employed by both algorithms. Additionally, they both use cluster centers to model the data; however, k-means clustering tends to find clusters of comparable spatial extent, while the expectation-maximization mechanism allows clusters to have different shapes.
+						</p>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		<!-- /.container -->
+	</section>
+	<!-- end section: kmeans -->
+
+
+
+	<!-- section: team -->
+	<section id="about" class="section">
+		<div class="container">
+			<h4>Project Team 13</h4>
+			<div class="row">
+				<div class="span4 offset1">
+					<div>
+						<h2>We live with <strong>creativity</strong></h2>
+						<p>
+							Sample Sample Sample SampleSample SampleSample SampleSample SampleSample SampleSample Sample
+							Sample SampleSample SampleSample SampleSample SampleSample SampleSample SampleSample SampleSample SampleSample SampleSample Sample
+						</p>
+					</div>
+				</div>
+				<div class="span6">
+					<div class="aligncenter">
+						<img src="img/icons/creativity.png" alt="" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span2 offset2 flyIn">
+					<div class="people">
+						<img class="team-thumb img-circle" src="img/team/img-1.jpg" alt="" />
+						<h3>Arijit Mandal</h3>
+						
+					</div>
+				</div>
+				<div class="span2 flyIn">
+					<div class="people">
+						<img class="team-thumb img-circle" src="img/team/img-2.jpg" alt="" />
+						<h3>Aman Ojha</h3>
+						
+					</div>
+				</div>
+				<div class="span2 flyIn">
+					<div class="people">
+						<img class="team-thumb img-circle" src="img/team/img-3.jpg" alt="" />
+						<h3>Rutvik Pensionwar</h3>
+						
+					</div>
+				</div>
+				<div class="span2 flyIn">
+					<div class="people">
+						<img class="team-thumb img-circle" src="img/team/img-4.jpg" alt="" />
+						<h3>Vishwesh Patel</h3>
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<!-- /.container -->
+	</section>
+	<!-- end section: team -->
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="span6 offset3">
+					<ul class="social-networks">
+						<li><a href="https://github.com/SJSU272LabF17/Project-Team-13">
+								<i class="icon-circled icon-bgdark icon-github icon-2x">
+								</i>
+							</a>
+						</li>
+						</ul>
+					<p class="copyright">
+						&copy; CMPE 272. Project Group 13
+						<div class="credits">
+				
+							
+						</div>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- ./container -->
+	</footer>
+	<a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.scrollTo.js"></script>
+	<script src="js/jquery.nav.js"></script>
+	<script src="js/jquery.localScroll.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/jquery.prettyPhoto.js"></script>
+	<script src="js/isotope.js"></script>
+	<script src="js/jquery.flexslider.js"></script>
+	<script src="js/inview.js"></script>
+	<script src="js/animate.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="contactform/contactform.js"></script>
+
+</body>
+
 </html>
