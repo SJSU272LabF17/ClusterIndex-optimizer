@@ -5,6 +5,8 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , index = require('./routes/index')
+  , fileUpload = require('express-fileupload')
   , http = require('http')
   , path = require('path');
 
@@ -20,6 +22,7 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
 
 routes(app);
 
