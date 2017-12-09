@@ -7,11 +7,6 @@ module.exports = function(app){
 		res.render('Home');
 	});
 	
-	app.get('/Upload', function(req,res){
-		
-		res.render('Upload');
-	});
-	
 	app.get('/Comparison', function(req,res){
 		
 		res.render('Comparison');
