@@ -44,6 +44,8 @@
 		<div class="row">
 			<canvas id="no_indexing" width="600" height="400" style="margin-left:150px;"></canvas>
 			<canvas id="with_indexing" width="600" height="400" style="margin-left:50px;"></canvas>
+			
+			
 		</div>
 
 	</section>
@@ -88,6 +90,8 @@
 	<script src="contactform/contactform.js"></script>
 	
 	<script>
+		//document.write('AMANNNN');
+		//document.write("<%- data1.datas %>");
 		var Data = {
 			labels : ["January","February","March","April","May","June"],
 			datasets : [
@@ -96,7 +100,7 @@
 					strokeColor : "#ACC26D",
 					pointColor : "#fff",
 					pointStrokeColor : "#9DB86D",
-					data : [203,156,99,251,305,247]
+					data : [<%- data1.datas %>]
 				}
 			]
 		}
@@ -112,7 +116,7 @@
     					strokeColor : "#ACC26D",
     					pointColor : "#fff",
     					pointStrokeColor : "#9DB86D",
-    					data : [203,156,99,251,305,247]
+    					data : [<%- data2.datas %>]
     				}
     			]
     		}
