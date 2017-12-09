@@ -11,6 +11,9 @@
 	<link href="css/style.css" rel="stylesheet">
 	<link href="color/default.css" rel="stylesheet">
 	<link rel="shortcut icon" href="img/favicon.ico">
+	
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 </head>
 
 <body>
@@ -28,8 +31,6 @@
 						<ul id="menu-main" class="nav">
 							<li><a title="home" href="/#home">HOME</a></li>
 							<li><a title="clustering" href="/#clustering">CLUSTERING</a></li>
-							<li><a title="kmeans" href="/#kmeans">K-MEANS</a></li>
-							<li><a title="upload" href="/Upload">UPLOAD</a></li>
 							<li><a title="comparision" href="/Comparison">COMPARISION</a></li>
 							<li><a title="team" href="/#about">TEAM 13</a></li>
 						</ul>
@@ -38,31 +39,15 @@
 			</div>
 		</div>
 	</div>
-		<!-- section: upload -->
-	<section id="upload" class="section">
-		<div class="container">
-			<h4>Comparision</h4>
-			<div class="row">
-				<div class="span5 offset1">
-					<div>
-						<h2><strong></strong>TEXT</h2>
-						<p>
-							Placeholder...
-						</p>
-					</div>
-				</div>
-				<div class="span6">
-					<div class="aligncenter">
-						<img src="img/icons/" alt="" />
-					</div>
-				</div>
-			</div>
-			
+		<!-- section: comparison -->
+	<section id="comparison" class="section">
+		<div class="row">
+			<canvas id="no_indexing" width="600" height="400" style="margin-left:150px;"></canvas>
+			<canvas id="with_indexing" width="600" height="400" style="margin-left:50px;"></canvas>
 		</div>
 
-
 	</section>
-	<!-- end section: upload -->
+	<!-- end section: comparison -->
 
 
 	<footer>
@@ -101,6 +86,40 @@
 	<script src="js/animate.js"></script>
 	<script src="js/custom.js"></script>
 	<script src="contactform/contactform.js"></script>
+	
+	<script>
+		var Data = {
+			labels : ["January","February","March","April","May","June"],
+			datasets : [
+				{
+					fillColor : "rgba(172,194,132,0.4)",
+					strokeColor : "#ACC26D",
+					pointColor : "#fff",
+					pointStrokeColor : "#9DB86D",
+					data : [203,156,99,251,305,247]
+				}
+			]
+		}
+		
+    	var time_compare = document.getElementById('no_indexing').getContext('2d');
+    	new Chart(time_compare).Line(Data);
+    	
+    	var Data2 = {
+    			labels : ["January","February","March","April","May","June"],
+    			datasets : [
+    				{
+    					fillColor : "rgba(255, 0, 0, 0.6)",
+    					strokeColor : "#ACC26D",
+    					pointColor : "#fff",
+    					pointStrokeColor : "#9DB86D",
+    					data : [203,156,99,251,305,247]
+    				}
+    			]
+    		}
+    		
+        	var time_compare2 = document.getElementById('with_indexing').getContext('2d');
+        	new Chart(time_compare2).Line(Data2);
+	</script>
 
 </body>
 
