@@ -2,6 +2,13 @@ var ejs = require("ejs");
 var winston = require('winston');
 var util = require('./util');
 
+var mongoose = require('mongoose');
+var graphData = require('./../model/graph_data');
+var mongoURL = "mongodb://localhost:27017/cmpe_graph_database";
+var promise = mongoose.connect(mongoURL, {
+    useMongoClient: true
+});
+
 var queryLogger = new (winston.Logger)({
     level:"info",
     transports: [
