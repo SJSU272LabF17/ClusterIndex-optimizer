@@ -1,6 +1,6 @@
 var ejs = require("ejs");
 var winston = require('winston');
-var util = require('util');
+var util = require('./util');
 
 var queryLogger = new (winston.Logger)({
     level:"info",
@@ -12,21 +12,21 @@ var queryLogger = new (winston.Logger)({
 
 
 module.exports = function(app){
-	
+
 	app.get('/', function(req,res){
-		
+
 		res.render('Home');
 	});
-	
-	
-	
+
+
+
 	app.get('/Comparison', function(req,res){
-		
+
 		var sample = {datas:[100,100,100,100]};
 		var graphData = JSON.stringify(sample);
 		var graphParse = JSON.parse(graphData);
-	
-		
+
+
 		ejs.renderFile('./views/Comparison.ejs',{data1:graphParse,data2:graphParse},function(err, result) {
 	        // render on success
 	        if (!err) {
@@ -38,54 +38,57 @@ module.exports = function(app){
 	            console.log(err);
 	        }
 	    });
-		
+
 		//res.render('Comparison');
 	});
-	
+
 	app.get('/api/processJSON', function(req,res){
-		
-		//API will be called from the upload page.
-		//Logic for inserting JSON in MongoDB and Processing file for clustoring 
-		//will be written here.
-		//After processing app.render('/Comparison') will be called.
-		
-		
-		
-		
+
 	});
-	
-	app.get('/query1', function(req, res, next) {
-  queryLogger.info("select * from flight_transaction where destination_city in (select destination_city from flight_transaction where booking_amount > (select avg (booking_amount ) from flight_transaction)) order by destination_city");
 
-});
+  app.get('/query1', function(req, res, next) {
+    queryLogger.info("select user.first_name, user.last_name, user.company, user.country_code, country.country from user, country where user.country_code = country.country_code order by user.user_id");
+    res.status(201).json({result:"user country details executed"});
+  });
 
-app.get('/query2', function(req, res, next) {
-  queryLogger.info("select kayak_database_t.car_transaction.user_id as user_id1, user_id as userid2, a.src_city from kayak_database_t.car_transaction , kayak_database_t.car_transaction  where kayak_database_t.car_transaction.user_id <> kayak_database_t.car_transaction.user_id and a.src_city=b.src_city order by a.src_city");
-});
+  app.get('/query2', function(req, res, next) {
+    queryLogger.info("select user.first_name, user.last_name, user.company, stock.stock_sector, stock.stock_symbol, stock.stock_market_cap from user, stock where user.company = stock.company and stock.stock_sector in ('Technology', 'Finance')");
+    res.status(201).json({result:"user's company stock details executed"});
+  });
 
-app.get('/query3', function(req, res, next) {
-  queryLogger.info("select * from flight_transaction where destination_city in (select destination_city from flight_transaction where booking_amount > (select avg(booking_amount) from flight_transaction)) order by destination_city");
-});
+  app.get('/query3', function(req, res, next) {
+    queryLogger.info("select country.country, user.gender, count(*) from user, country where user.country_code = country.country_code group by country.country, user.gender order by user.country_code");
+    res.status(201).json({result:" male to female ratio executed"});
+  });
+  app.get('/query4', function(req, res, next) {
+    queryLogger.info("select user.first_name, user.last_name, user.company, company.street_number, company.street_name, company.city, company.state, company.country from user, company where user.company = company.company order by user.user_id");
+    res.status(201).json({result:"user company executed"});
+  });
+  app.get('/query5', function(req, res, next) {
+    queryLogger.info("select user.user_id, user.first_name, user.last_name, user.addressId, address.street_name, address.city, address.state from user, address where user.addressId = address.addressId order by user.user_id");
+    res.status(201).json({result:"user details executed"});
+  });
 
-app.get('/indexgenerator', function(req, res, next){
-    const options = {
-      until: new Date(),
-      order: 'desc',
-      fileds:["message"]
-    };
 
-    queryLogger.query(options, function (err, results) {
-      if(err){
-        res.status(401).json({result:[]})
-      }
-      var analysys_result = util.parseLogLine(results);
-      console.log("analysys_result",analysys_result);
-      results.file.map((data)=>{
-        console.log(data);
-      });
-      res.status(201).json({result:results});
-      });
+  app.get('/indexgenerator', function(req, res, next){
+      const options = {
+        until: new Date(),
+        order: 'desc',
+        fileds:["message"]
+      };
 
-});
-	
+      queryLogger.query(options, function (err, results) {
+        if(err){
+          res.status(401).json({result:[]})
+        }
+        var analysys_result = util.parseLogLine(results.file);
+        console.log("analysys_result",analysys_result);
+        results.file.map((data)=>{
+          console.log(data);
+        });
+        res.status(201).json({result:analysys_result});
+        });
+
+  });
+
 };
