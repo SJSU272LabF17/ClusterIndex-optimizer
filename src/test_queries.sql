@@ -13,18 +13,18 @@ select user.first_name, user.last_name, user.company, company.street_number, com
 5.
 select user.user_id, user.first_name, user.last_name, user.addressId, address.street_name, address.city, address.state from user, address where user.addressId = address.addressId order by user_id;
 
-//Set index user_id, country_code
+/*Set index user_id, country_code*/
 ALTER TABLE `user_with_index`.`user` 
 ADD INDEX `index_1` (`user_id` ASC),
 ADD INDEX `index_2` (`country_code` ASC);
 
-//Set index user_id, country_code, company
+/*Set index user_id, country_code, company*/
 ALTER TABLE `user_with_index`.`user` 
 ADD INDEX `index_1` (`user_id` ASC),
 ADD INDEX `index_2` (`country_code` ASC),
 ADD INDEX `index_3` (`company` ASC);
 
-//Set joining tables indexes: addressId, company, country, stock_id
+/*Set joining tables indexes: addressId, company, country, stock_id*/
 ALTER TABLE `user_with_index`.`address` 
 ADD INDEX `index_addId_1` (`addressId` ASC);
 
