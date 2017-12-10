@@ -1,7 +1,7 @@
 // author : arijit.mandal@sjsu.edu (Arijit Mandal)
 
 
-export function parseLogLine (querylist){
+function parseLogLine (querylist){
 var sqlkeywords = ["AND","OR","ORDER","GROUP","<","<=",">",
                    ">=","=","<>","WHERE","INNER","LEFT","RIGHT","OUTER","CROSS","SELF","BY",
                   "SELECT","FROM","AVG","SUM","MAX","MIN","COUNT","IN"]
@@ -112,3 +112,4 @@ querylist.map((query)=>{
 });
 return result;
 }
+exports.parseLogLine = parseLogLine;
