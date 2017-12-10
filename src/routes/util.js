@@ -13,16 +13,17 @@ var columns = new Set();
 var result = {}
 var aliasreg = new RegExp('.+,$')
 querylist.map((query)=>{
+    console.log("query.message:\n",query.message);
     var query_array = query.message.split(' ');
     for(var index=0;index<query_array.length;){
     var word = query_array[index].toUpperCase();
-        console.log("###",word);
+        //console.log("###",word);
     switch(word){
 
     case "FROM":
             console.log("matched from",word);
             index++;
-            
+
             while(query_array[index] && tableBoundary.indexOf(query_array[index].toUpperCase())<0){
                 let tablename = query_array[index].toUpperCase();
                 tablename = tablename.replace(/[&\/\\#,+()$~%'":*?<>{}=]/g,'').trim();
@@ -39,7 +40,7 @@ querylist.map((query)=>{
     case "JOIN":
             console.log("matched join",word);
             index++;
-            
+
             while(query_array[index] && tableBoundary.indexOf(query_array[index].toUpperCase())<0){
                 let tablename = query_array[index].toUpperCase();
                 tablename1 = tablename.replace(/[&\/\\#,+()$~%'":*?<>{}=]/g,'').trim();
@@ -52,7 +53,7 @@ querylist.map((query)=>{
                 console.log(tables, index);
             }
         break;
-                
+
     case "AND":
             console.log("matche AND",word);
             index++;
@@ -67,7 +68,7 @@ querylist.map((query)=>{
                         result[tab_col[0]][tab_col[1]] +=1;
                     }
                 }
-                    
+
                 index++;
                 console.log("And",query_array[index]);
             }
