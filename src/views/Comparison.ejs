@@ -45,7 +45,16 @@
 			<canvas id="no_indexing" width="600" height="400" style="margin-left:150px;"></canvas>
 			<canvas id="with_indexing" width="600" height="400" style="margin-left:50px;"></canvas>
 			
+		</div>
+		
+		<div class="button-div" style="display:inline">
 			
+			<form action = "/noIndex" method = "get">
+        		<button type="submit" class="btn btn-success" style="margin-left:30%;float:left">No Indexing</button>
+    		</form>
+    		<form action = "/Index" method = "get">
+				<button type="submit" class="btn btn-success" style="margin-left:30%;float:left;">With Indexing</button>
+			</form>	
 		</div>
 
 	</section>
@@ -90,13 +99,12 @@
 	<script src="contactform/contactform.js"></script>
 	
 	<script>
-		//document.write('AMANNNN');
-		//document.write("<%- data1.datas %>");
+		
 		var Data = {
 			labels : ["January","February","March","April","May","June"],
 			datasets : [
 				{
-					fillColor : "rgba(172,194,132,0.4)",
+					fillColor : "rgba(255, 0, 0, 0.6)",
 					strokeColor : "#ACC26D",
 					pointColor : "#fff",
 					pointStrokeColor : "#9DB86D",
@@ -112,7 +120,7 @@
     			labels : ["January","February","March","April","May","June"],
     			datasets : [
     				{
-    					fillColor : "rgba(255, 0, 0, 0.6)",
+    					fillColor : "rgba(172,194,132,0.4)",
     					strokeColor : "#ACC26D",
     					pointColor : "#fff",
     					pointStrokeColor : "#9DB86D",

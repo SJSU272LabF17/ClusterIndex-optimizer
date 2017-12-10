@@ -22,8 +22,9 @@ module.exports = function(app){
 
 	app.get('/Comparison', function(req,res){
 
-		var sample = {datas:[100,100,100,100]};
-		var graphData = JSON.stringify(sample);
+		//Initial Data set to be set as 0
+		var dataset = {datas:[0,0,0,0,0,0]};
+		var graphData = JSON.stringify(dataset);
 		var graphParse = JSON.parse(graphData);
 
 
@@ -42,7 +43,61 @@ module.exports = function(app){
 		//res.render('Comparison');
 	});
 
-	app.get('/api/processJSON', function(req,res){
+	app.get('/noIndex', function(req,res){
+		
+		console.log('Message Received !!!!')
+		
+		//After hitting no Index
+		//dataset to be added after fetching from db
+		var dataset1 = {datas:[20,30,60,80,10,50]};
+		var graphData1 = JSON.stringify(dataset1);
+		var graphParse1= JSON.parse(graphData1);
+		
+		var dataset2 = {datas:[0,0,0,0,0,0]};
+		var graphData2 = JSON.stringify(dataset2);
+		var graphParse2 = JSON.parse(graphData2);
+
+
+		ejs.renderFile('./views/Comparison.ejs',{data1:graphParse1,data2:graphParse2},function(err, result) {
+	        // render on success
+	        if (!err) {
+	            res.end(result);
+	        }
+	        // render or error
+	        else {
+	            res.end('An error occurred');
+	            console.log(err);
+	        }
+	    });
+
+	});
+	
+	app.get('/Index', function(req,res){
+		
+		console.log('Index Received !!!!')
+		
+		//After hitting no Index
+		//dataset to be added after fetching from db
+		var dataset1 = {datas:[20,30,60,80,10,50]};
+		var graphData1 = JSON.stringify(dataset1);
+		var graphParse1= JSON.parse(graphData1);
+		
+		var dataset2 = {datas:[20,70,20,90,30,40]};
+		var graphData2 = JSON.stringify(dataset2);
+		var graphParse2 = JSON.parse(graphData2);
+
+
+		ejs.renderFile('./views/Comparison.ejs',{data1:graphParse1,data2:graphParse2},function(err, result) {
+	        // render on success
+	        if (!err) {
+	            res.end(result);
+	        }
+	        // render or error
+	        else {
+	            res.end('An error occurred');
+	            console.log(err);
+	        }
+	    });
 
 	});
 
