@@ -11,127 +11,130 @@
 	<link href="css/style.css" rel="stylesheet">
 	<link href="color/default.css" rel="stylesheet">
 	<link rel="shortcut icon" href="img/favicon.ico">
-	
+
 	<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
 	<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 </head>
 
 <body>
-	<!-- navbar -->
-	<div class="navbar-wrapper">
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<!-- Responsive navbar -->
-					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+<!-- navbar -->
+<div class="navbar-wrapper">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<!-- Responsive navbar -->
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 				</a>
-					<h1 class="brand"><a href="/">PROJECT</a></h1>
-					<!-- navigation -->
-					<nav class="pull-right nav-collapse collapse">
-						<ul id="menu-main" class="nav">
-							<li><a title="home" href="/#home">HOME</a></li>
-							<li><a title="clustering" href="/#clustering">CLUSTERING</a></li>
-							<li><a title="comparision" href="/Comparison">COMPARISION</a></li>
-							<li><a title="team" href="/#about">TEAM 13</a></li>
-						</ul>
-					</nav>
-				</div>
+				<h1 class="brand"><a href="/">PROJECT</a></h1>
+				<!-- navigation -->
+				<nav class="pull-right nav-collapse collapse">
+					<ul id="menu-main" class="nav">
+						<li><a title="home" href="/#home">HOME</a></li>
+						<li><a title="clustering" href="/#clustering">CLUSTERING</a></li>
+						<li><a title="comparision" href="/Comparison">COMPARISION</a></li>
+						<li><a title="team" href="/#about">TEAM 13</a></li>
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>
-		<!-- section: comparison -->
-	<section id="comparison" class="section">
+</div>
+<!-- section: comparison -->
+<section id="comparison" class="section">
+	<div class="row">
+		<canvas id="no_indexing" width="600" height="400" style="margin-left:150px;"></canvas>
+		<canvas id="with_indexing" width="600" height="400" style="margin-left:50px;"></canvas>
+
+	</div>
+
+	<div class="button-div" style="display:inline">
+
+		<form action = "/getQueryExecutionTimeWithoutIndex" method = "get">
+			<button type="submit" class="btn btn-success" style="margin-left:30%;float:left">No Indexing</button>
+		</form>
+		<form action = "/indexGenerator" method = "get">
+			<button type="submit" class="btn btn-danger" style="margin-left:30%;float:left">Index</button>
+		</form>
+		<form action = "/getQueryExecutionTimeWithIndex" method = "get">
+			<button type="submit" class="btn btn-success" style="margin-left:30%;float:left;">With Indexing</button>
+		</form>
+	</div>
+
+</section>
+<!-- end section: comparison -->
+
+
+<footer>
+	<div class="container">
 		<div class="row">
-			<canvas id="no_indexing" width="600" height="400" style="margin-left:150px;"></canvas>
-			<canvas id="with_indexing" width="600" height="400" style="margin-left:50px;"></canvas>
-			
-		</div>
-		
-		<div class="button-div" style="display:inline">
-			
-			<form action = "/noIndex" method = "get">
-        		<button type="submit" class="btn btn-success" style="margin-left:30%;float:left">No Indexing</button>
-    		</form>
-    		<form action = "/Index" method = "get">
-				<button type="submit" class="btn btn-success" style="margin-left:30%;float:left;">With Indexing</button>
-			</form>	
-		</div>
-
-	</section>
-	<!-- end section: comparison -->
+			<div class="span6 offset3">
+				<ul class="social-networks">
+					<li><a href="https://github.com/SJSU272LabF17/Project-Team-13">
+							<i class="icon-circled icon-bgdark icon-github icon-2x">
+							</i>
+						</a>
+					</li>
+				</ul>
+				<p class="copyright">
+					&copy; CMPE 272. Project Group 13
+				<div class="credits">
 
 
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="span6 offset3">
-					<ul class="social-networks">
-						<li><a href="https://github.com/SJSU272LabF17/Project-Team-13">
-								<i class="icon-circled icon-bgdark icon-github icon-2x">
-								</i>
-							</a>
-						</li>
-						</ul>
-					<p class="copyright">
-						&copy; CMPE 272. Project Group 13
-						<div class="credits">
-				
-							
-						</div>
-					</p>
 				</div>
+				</p>
 			</div>
 		</div>
-		<!-- ./container -->
-	</footer>
-	<a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
-	<script src="js/jquery.js"></script>
-	<script src="js/jquery.scrollTo.js"></script>
-	<script src="js/jquery.nav.js"></script>
-	<script src="js/jquery.localScroll.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/jquery.prettyPhoto.js"></script>
-	<script src="js/isotope.js"></script>
-	<script src="js/jquery.flexslider.js"></script>
-	<script src="js/inview.js"></script>
-	<script src="js/animate.js"></script>
-	<script src="js/custom.js"></script>
-	<script src="contactform/contactform.js"></script>
-	
-	<script>
-		
-		var Data = {
-			labels : ["January","February","March","April","May","June"],
-			datasets : [
-				{
-					fillColor : "rgba(255, 0, 0, 0.6)",
-					strokeColor : "#ACC26D",
-					pointColor : "#fff",
-					pointStrokeColor : "#9DB86D",
-					data : [<%- data1.datas %>]
-				}
-			]
-		}
-		
-    	var time_compare = document.getElementById('no_indexing').getContext('2d');
-    	new Chart(time_compare).Line(Data);
-    	
-    	var Data2 = {
-    			labels : ["January","February","March","April","May","June"],
-    			datasets : [
-    				{
-    					fillColor : "rgba(172,194,132,0.4)",
-    					strokeColor : "#ACC26D",
-    					pointColor : "#fff",
-    					pointStrokeColor : "#9DB86D",
-    					data : [<%- data2.datas %>]
-    				}
-    			]
-    		}
-    		
-        	var time_compare2 = document.getElementById('with_indexing').getContext('2d');
-        	new Chart(time_compare2).Line(Data2);
-	</script>
+	</div>
+	<!-- ./container -->
+</footer>
+<a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.scrollTo.js"></script>
+<script src="js/jquery.nav.js"></script>
+<script src="js/jquery.localScroll.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/isotope.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/inview.js"></script>
+<script src="js/animate.js"></script>
+<script src="js/custom.js"></script>
+<script src="contactform/contactform.js"></script>
+
+<script>
+
+    var Data = {
+        labels : ["query1","query2","query3","query4","query5"],
+        datasets : [
+            {
+                fillColor : "rgba(255, 0, 0, 0.6)",
+                strokeColor : "#ACC26D",
+                pointColor : "#fff",
+                pointStrokeColor : "#9DB86D",
+                data : [<%- data1 %>]
+            }
+        ]
+    }
+
+    var time_compare = document.getElementById('no_indexing').getContext('2d');
+    new Chart(time_compare).Line(Data);
+
+    var Data2 = {
+        labels : ["query1","query2","query3","query4","query5"],
+        datasets : [
+            {
+                fillColor : "rgba(172,194,132,0.4)",
+                strokeColor : "#ACC26D",
+                pointColor : "#fff",
+                pointStrokeColor : "#9DB86D",
+                data : [<%- data2 %>]
+            }
+        ]
+    }
+
+    var time_compare2 = document.getElementById('with_indexing').getContext('2d');
+    new Chart(time_compare2).Line(Data2);
+</script>
 
 </body>
 
