@@ -11,7 +11,7 @@ select country.country, user.gender, count(*) from user, country where user.coun
 select user.first_name, user.last_name, user.company, company.street_number, company.street_name, company.city, company.state, company.country from user, company where user.company = company.company order by user.user_id;
 
 5.
-select user.user_id, user.first_name, user.last_name, user.addressId, address.street_name, address.city, address.state from user, address where user.addressId = address.addressId order by user_id;
+select user.user_id, user.first_name, user.last_name, user.addressId, address.street_name, address.city, address.state from user, address where user.addressId = address.addressId order by user.user_id;
 
 /*Set index user_id, country_code*/
 ALTER TABLE `user_with_index`.`user` 
