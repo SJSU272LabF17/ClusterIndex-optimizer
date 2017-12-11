@@ -2,7 +2,6 @@
 
 
 function parseLogLine (querylist){
-    "use strict";
 var sqlkeywords = ["AND","OR","ORDER","GROUP","<","<=",">",
                    ">=","=","<>","WHERE","INNER","LEFT","RIGHT","OUTER","CROSS","SELF","BY",
                   "SELECT","FROM","AVG","SUM","MAX","MIN","COUNT","IN"]
@@ -14,7 +13,6 @@ var columns = new Set();
 var result = {}
 var aliasreg = new RegExp('.+,$')
 querylist.map((query)=>{
-    
     console.log("query.message:\n",query.message);
     var query_array = query.message.split(' ');
     for(var index=0;index<query_array.length;){
@@ -27,7 +25,7 @@ querylist.map((query)=>{
             index++;
 
             while(query_array[index] && tableBoundary.indexOf(query_array[index].toUpperCase())<0){
-                let tablename = query_array[index].toUpperCase();
+                var tablename = query_array[index].toUpperCase();
                 tablename = tablename.replace(/[&\/\\#,+()$~%'":*?<>{}=]/g,'').trim();
                 if(tablename && sqlkeywords.indexOf(tablename)< 0)
                     if(!result.hasOwnProperty(tablename)){
@@ -44,7 +42,7 @@ querylist.map((query)=>{
             index++;
 
             while(query_array[index] && tableBoundary.indexOf(query_array[index].toUpperCase())<0){
-                let tablename = query_array[index].toUpperCase();
+                var tablename = query_array[index].toUpperCase();
                 tablename1 = tablename.replace(/[&\/\\#,+()$~%'":*?<>{}=]/g,'').trim();
                 if(tablename1 && sqlkeywords.indexOf(tablename1)< 0)
                     tables.add(tablename1);
@@ -60,10 +58,10 @@ querylist.map((query)=>{
             console.log("matche AND",word);
             index++;
             while(query_array[index] && colBoundary.indexOf(query_array[index].toUpperCase())<0){
-                let colname = query_array[index].replace(/[&\/\\#,+()$~%'":*?<>{}=]/g,'').trim().toUpperCase();
+                var colname = query_array[index].replace(/[&\/\\#,+()$~%'":*?<>{}=]/g,'').trim().toUpperCase();
                 if(colname && sqlkeywords.indexOf(colname)< 0){
                     columns.add(colname);
-                    let tab_col = colname.split(".");
+                    var tab_col = colname.split(".");
                      if(!result[tab_col[0]].hasOwnProperty(tab_col[1])){
                          result[tab_col[0]][tab_col[1]]=1;
                     }else{
@@ -78,11 +76,11 @@ querylist.map((query)=>{
             console.log("matche where",word);
             index++;
             while(query_array[index] && colBoundary.indexOf(query_array[index].toUpperCase())<0){
-                let colname = query_array[index].replace(/[&\/\\#,+()$~%'":*?<>{}=]/g,'').trim().toUpperCase();
+                var colname = query_array[index].replace(/[&\/\\#,+()$~%'":*?<>{}=]/g,'').trim().toUpperCase();
                 console.log("colname:",colname);
                 if(colname && sqlkeywords.indexOf(colname)< 0){
                     columns.add(colname);
-                    let tab_col = colname.split(".");
+                    var tab_col = colname.split(".");
                     if(!result[tab_col[0]].hasOwnProperty(tab_col[1])){
                         result[tab_col[0]][tab_col[1]]=1;
                     }else{
@@ -96,10 +94,10 @@ querylist.map((query)=>{
             console.log("matche by",word);
             index++;
             while(query_array[index] && colBoundary.indexOf(query_array[index].toUpperCase())<0){
-                let colname = query_array[index].replace(/[&\/\\#,+()$~%'":*?<>{}=]/g,'').trim().toUpperCase();
+                var colname = query_array[index].replace(/[&\/\\#,+()$~%'":*?<>{}=]/g,'').trim().toUpperCase();
                 if(colname && sqlkeywords.indexOf(colname)< 0){
                     columns.add(colname);
-                    let tab_col = colname.split(".");
+                    var tab_col = colname.split(".");
                     if(!result[tab_col[0]].hasOwnProperty(tab_col[1])){
                         result[tab_col[0]][tab_col[1]]=2;
                     }else{
