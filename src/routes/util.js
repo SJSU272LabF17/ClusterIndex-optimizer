@@ -13,6 +13,7 @@ var columns = new Set();
 var result = {}
 var aliasreg = new RegExp('.+,$')
 querylist.map((query)=>{
+    "use strict";
     console.log("query.message:\n",query.message);
     var query_array = query.message.split(' ');
     for(var index=0;index<query_array.length;){
