@@ -1,20 +1,3 @@
+## Team 13 - Development of index generation algorithm
 
-
-# 272_ClusterWithKMeans
-
-
-
-## Usage
-
-
-
-## Developing
-
-
-
-### Tools
-
-Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)
- ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))   
-
-Nodeclipse is free open-source project that grows with your contributions.
+This is the source directory of the project, where all development related files are pushed.
