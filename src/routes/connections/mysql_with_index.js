@@ -27,8 +27,9 @@ function dbOperation(callback,sqlQuery){
             console.log("\n DB Results : "+rows.length);
             callback(err, rows);
         }
+            console.log("\n Connection closed.");
+            connection.end();
     });
-    console.log("\n Connection closed.");
-    connection.end();
+
 }
 exports.dbOperation = dbOperation;
