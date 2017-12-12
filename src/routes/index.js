@@ -48,7 +48,7 @@ module.exports = function(app){
 
 	app.get('/Comparison', function(req,res){
 
-		ejs.renderFile('./views/Comparison.ejs',{data1:[0,0,0,0],data2:[0,0,0,0]},function(err, result) {
+		ejs.renderFile('./views/Comparison.ejs',{data1:[0,0,0,0,0],data2:[0,0,0,0,0]},function(err, result) {
 	        // render on success
 	        if (!err) {
 	            res.end(result);
@@ -269,7 +269,13 @@ module.exports = function(app){
 
             console.log("\nCreating index for "+tables[counter]+" on column "+column+"\n"+"CREATE INDEX id_"+column+"_"+Math.random()+" ON "+tables[counter]+(column)+"\n");
 
-            var indexQuery = "CREATE INDEX id_"+column+"_ ON "+tables[counter]+"("+column+")";
+            var tb = (tables[counter]).toLowerCase();
+
+            var cl = column.toLowerCase();
+
+            console.log("tb - "+tb+" cl -"+cl);
+
+            var indexQuery = "CREATE INDEX id_"+column+"_ ON "+tb+"("+cl+")";
 
             executeQuery(connection2,indexQuery,(err,result)=>{
                 if(err){
